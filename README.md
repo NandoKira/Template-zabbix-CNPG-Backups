@@ -142,6 +142,12 @@ Macros to configure:
 - Backup items visible in **Latest data**
 - Alerts appear in **Problems** for failures/age/no-success
 
+Example of **Lastest data**
+<p align="center">
+  <img src="docs/cnpg_backups_by_zabbix_latest-data.png" width="40%">
+</p>
+
+
 ## 🤝 Contributing
 
 Issues & PRs are welcome.
