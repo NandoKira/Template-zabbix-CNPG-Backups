@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/cnpg_backups_by_zabbix_made_by_crackol.png" width="66%">
+</p>
+
 # CNPG Backups Monitoring – Zabbix Template (API-based)
 
 > **Zabbix Template for CloudNativePG (CNPG) Backups Monitoring on Kubernetes**  
