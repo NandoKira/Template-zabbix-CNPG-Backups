@@ -85,6 +85,10 @@ subjects:
 ```
 
 Le token de ce ServiceAccount est ensuite utilisé dans Zabbix via la macro `{$KUBE.API.TOKEN}`.
+Pour le récuperer :
+```shell
+kubectl -n <NS> create token zabbix-service-account
+```
 
 ---
 
