@@ -120,7 +120,7 @@
                 "macros": [
                     {
                         "macro": "{$CNPG.BACKUP.MAXAGE}",
-                        "value": "604\u202f800",
+                        "value": "604800",
                         "description": "7j in seconds"
                     },
                     {
