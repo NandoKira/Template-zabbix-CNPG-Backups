@@ -143,8 +143,8 @@ Macros to configure:
 - Alerts appear in **Problems** for failures/age/no-success
 
 Example of **Lastest data**
-<p align="center">
-  <img src="docs/cnpg_backups_by_zabbix_latest-data.png" width="40%">
+<p align="left">
+  <img src="docs/cnpg_backups_by_zabbix_latest-data.png" width="100%">
 </p>
 
 
