@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/cnpg_backups_by_zabbix_made_by_crackol.png" width="40%">
+</p>
+
 # CNPG Backups Monitoring – Zabbix Template (API-based)
 
 > **Zabbix Template for CloudNativePG (CNPG) Backups Monitoring on Kubernetes**  
@@ -137,6 +141,12 @@ Macros to configure:
 
 - Backup items visible in **Latest data**
 - Alerts appear in **Problems** for failures/age/no-success
+
+Example of **Lastest data**
+<p align="left">
+  <img src="docs/cnpg_backups_by_zabbix_latest-data.png" width="100%">
+</p>
+
 
 ## 🤝 Contributing
 
