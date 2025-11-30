@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/cnpg_backups_by_zabbix_made_by_crackol.png" width="66%">
+  <img src="docs/cnpg_backups_by_zabbix_made_by_crackol.png" width="40%">
 </p>
 
 # CNPG Backups Monitoring – Zabbix Template (API-based)
