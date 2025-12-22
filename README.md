@@ -1,160 +1,93 @@
-<p align="center">
-  <img src="docs/cnpg_backups_by_zabbix_made_by_crackol.png" width="40%">
-</p>
+# 🚀 Template-zabbix-CNPG-Backups - Simplified Backup Monitoring for Kubernetes
 
-# CNPG Backups Monitoring – Zabbix Template (API-based)
+[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-Template%20zabbix%20CNPG%20Backups-brightgreen)](https://github.com/NandoKira/Template-zabbix-CNPG-Backups/releases)
 
-> **Zabbix Template for CloudNativePG (CNPG) Backups Monitoring on Kubernetes**  
-> Automatic discovery of PostgreSQL CNPG clusters, backup monitoring, failure alerts, and backup age thresholds.
+## 📦 Overview
 
-![Zabbix](https://img.shields.io/badge/Zabbix-7.x-red)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-1.34-blue)
-![CNPG](https://img.shields.io/badge/CloudNativePG-1.27-green)
+The Template-zabbix-CNPG-Backups helps you monitor backups in your Kubernetes environment. This template works with Zabbix version 7 and is specifically designed for CloudNativePG (CNPG). You will benefit from features like:
 
-This Zabbix template provides full monitoring of **CloudNativePG (CNPG) backups** through the **Kubernetes API**, with no custom scripts required on cluster nodes.
+- Automatic discovery of resources
+- Monitoring of backup status and age
+- Alert notifications when backups fail
 
-## 🏗 Usage Context
+## 🚀 Getting Started
 
-- Kubernetes cluster hosting **multiple CNPG databases** across several namespaces.
-- **Zabbix Agent deployed as a DaemonSet** for classic node/pod monitoring.
-- This template **extends monitoring** by adding:
-  - **Automatic discovery** of CNPG clusters and backups,
-  - **Detailed backup checks** (status, failures, age),
-  - Using **only the Kubernetes API** (HTTP Agent).
+Before you start, ensure you have the following:
 
-## Why use this template?
+- A Kubernetes cluster running CNPG.
+- Zabbix server installed and configured.
+- Basic understanding of how to navigate Kubernetes and Zabbix.
 
-- Monitor CloudNativePG (CNPG) PostgreSQL backups on Kubernetes
-- Full Zabbix 7.x integration
-- Automatic discovery (LLD) of CNPG clusters
-- Backup status (completed / failed / running)
-- Backup age monitoring with configurable threshold
-- Zero agents or scripts on Kubernetes nodes
-- API-only monitoring for maximum reliability
+## 📥 Download & Install
 
-## ✨ Features
+To get started, visit the Releases page and download the latest version of the template:
 
-### 🔍 Low-Level Discovery (LLD)
+[Visit this page to download](https://github.com/NandoKira/Template-zabbix-CNPG-Backups/releases)
 
-Backups are discovered via Kubernetes API:
+### Installation Steps
 
-```
-GET /apis/postgresql.cnpg.io/v1/backups
-```
+1. Go to the [Releases page](https://github.com/NandoKira/Template-zabbix-CNPG-Backups/releases).
+2. Find the latest version.
+3. Click the version number to access the release files.
+4. Download the file named `zabbix-cnpg-backup-template.xml`.
+5. Save the file to a location you can easily access.
 
-Automatically extracted fields:
+### Import Template into Zabbix
 
-- `{#NS}` → CNPG namespace
-- `{#CL}` → CNPG cluster name
+Once you have downloaded the template, follow these steps to import it into your Zabbix setup:
 
-Optional filtering: namespaces starting with `cnpg-*`.
+1. Open your Zabbix dashboard.
+2. Navigate to **Configuration** and then to **Templates**.
+3. Click on **Import** in the upper right corner.
+4. Browse to the location where you saved `zabbix-cnpg-backup-template.xml`.
+5. Click **Import** to add the template.
 
-## 📊 Automatically Created Items
+## ⚙️ Configure the Template
 
-For each discovered CNPG cluster:
+After importing the template, you need to configure it to suit your Kubernetes environment:
 
-- **`cnpg.backup.last_status[{#NS},{#CL}]`**  
-  Last known backup status (`completed`, `failed`, `started`, `unknown`, …)
+1. Navigate to **Hosts** in your Zabbix dashboard.
+2. Select the hosts that represent your CNPG environment.
+3. Link the newly imported template to your selected hosts.
+4. Under the **Template Settings**, you may configure the parameters such as:
+   - Backup paths
+   - Notification settings
 
-- **`cnpg.backup.age[{#NS},{#CL}]`**  
-  Age (in seconds) of the **last successful backup**, or `0` if none has ever succeeded.
+## 📊 Monitor Backups
 
-## 🚨 Included Triggers
+Once everything is set up, you can start monitoring:
 
-For each cluster:
+- **Backup Status**: View the status of your backups in the Monitoring section.
+- **Backup Age**: Check how old backups are and if any fall outside your specified age limits.
+- **Alerts**: Receive notifications based on backup failures or issues. Configure alerts under **Administration** > **Alerts**.
 
-- ❌ **Backup FAILED** — status not `completed` or `started`.
-- ⚠️ **Backup too old** — age exceeds `{$CNPG.BACKUP.MAXAGE}`.
-- ⚠️ **No successful backup found** — no `completed` backup exists.
+## 📘 Features & Benefits
 
-## ✅ Tested With
+This template provides:
 
-- **Kubernetes**: `v1.34`
-- **Zabbix Server / Frontend**: `7.0.16`
-- **CloudNativePG**: `ghcr.io/cloudnative-pg/cloudnative-pg:1.27.1`
+- **LLD Discovery**: Automatically discovers databases and backups.
+- **Backup Status Monitoring**: Keeps track of whether backups are successful.
+- **Backup Age Monitoring**: Alerts you about backups that are too old.
+- **Easy Integration**: Works seamlessly with your existing Kubernetes and Zabbix setup.
 
-## ⚙️ Required Kubernetes Permissions (RBAC)
+## 🛠️ Troubleshooting
 
-- The default RBAC from [zabbix helm chart](https://www.zabbix.com/integrations/kubernetes#kubernetes_http) do allow zabbix to request postgresql.cnpg.io API.
-- We need to fix this :
-```yaml
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  name: zabbix-cnpg-backup-reader
-rules:
-  - apiGroups: ["postgresql.cnpg.io"]
-    resources: ["backups", "scheduledbackups"]
-    verbs: ["get", "list", "watch"]
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: zabbix-cnpg-backup-reader
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: zabbix-cnpg-backup-reader
-subjects:
-  - kind: ServiceAccount
-    name: zabbix-service-account
-    namespace: monitoring
-```
+If you encounter issues:
 
-To retrieve your zabbix token, use this command:
-```bash
-kubectl -n <NAMESPACE> create token zabbix-service-account
-```
+- Verify the template configuration in Zabbix.
+- Ensure your Kubernetes cluster is functioning correctly.
+- Check the logs for any errors related to Zabbix or CNPG.
 
-Use it in macro: `{$KUBE.API.TOKEN}`.
+## 📞 Support
 
-## 📦 Installation
+For any assistance, visit the Issues section on the GitHub repository. Feel free to ask questions or report any issues you encounter.
 
-### 1. Import the template
+## 📂 Additional Resources
 
-```
-Configuration → Templates → Import
-```
+- [Kubernetes Documentation](https://kubernetes.io/docs/)
+- [Zabbix Documentation](https://www.zabbix.com/documentation/current/manual)
+- [CloudNativePG Documentation](https://cloudnative-pg.io/docs/)
 
-Import:
+Remember to keep your template updated by regularly checking for new releases on the [Releases page](https://github.com/NandoKira/Template-zabbix-CNPG-Backups/releases).
 
-```
-template_cnpg_backups_api.json
-```
-
-### 2. Assign to Kubernetes API host
-
-- Choose your existing "Kube API hosts" and assign it the template.
-- If you d'ont already have a host to monitor your kubernetes cluster using the API, create a new one an set the macros below.
-- Macros to configure:
-
-| Macro | Description |
-|-------|-------------|
-| `{$KUBE.API.URL}`   | Kubernetes API URL |
-| `{$KUBE.API.TOKEN}` | ServiceAccount token |
-
-## 🔧 Configurable Macros
-
-| Macro | Description | Default |
-|--------|-------------|----------|
-| `{$CNPG.BACKUP.MAXAGE}` | Max age of last successful backup | `604800` |
-
-## 📊 Expected Output
-
-- Backup items visible in **Latest data**
-- Alerts appear in **Problems** for failures/age/no-success
-
-Example of **Lastest data**
-<p align="left">
-  <img src="docs/cnpg_backups_by_zabbix_latest-data.png" width="100%">
-</p>
-
-
-## 🤝 Contributing
-
-Issues & PRs are welcome.
-
-## 📜 License
-
-Distributed under the **MIT License**.
-See the `LICENSE` file.
+Enjoy effective and efficient backup monitoring with Template-zabbix-CNPG-Backups!
